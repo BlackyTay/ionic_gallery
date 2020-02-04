@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plugins, CameraResultType, Capacitor, FilesystemDirectory, CameraPhoto, CameraSource } from '@capacitor/core';
+import { Platform } from '@ionic/angular';
 
 const { Camera, Filesystem, Storage } = Plugins;
 
@@ -9,6 +10,11 @@ const { Camera, Filesystem, Storage } = Plugins;
 export class PhotoService {
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";
+  private platform: Platform;
+
+  constructor(platform: Platform) {
+    this.platform = platform;
+  }
 
   public async addNewToGallery() {
     //Take a photo
@@ -97,7 +103,6 @@ export class PhotoService {
 
     }
 
-  constructor() { }
 }
 
 interface Photo {
