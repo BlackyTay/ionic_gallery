@@ -11,10 +11,15 @@ export class PhotoService {
 
   public async addNewToGallery() {
     //Take a photo
-    const capturePhoto = await Camera.getPhoto({
+    const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100
+    });
+
+    this.photos.unshift({
+      filepath: "soon...",
+      webviewPath: capturedPhoto.webPath
     });
   
   }
