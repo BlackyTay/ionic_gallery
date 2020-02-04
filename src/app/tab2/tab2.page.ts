@@ -11,6 +11,9 @@ import { PhotoService } from '../services/photo.service';
 
 export class Tab2Page {
 
+  ngOnInit() {
+    this.photoService.loadSaved();
+  }
   constructor(public photoService: PhotoService) {}
 
 }
