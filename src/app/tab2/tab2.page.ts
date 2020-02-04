@@ -16,7 +16,7 @@ export class Tab2Page {
   }
   constructor(public photoService: PhotoService, 
               public actionSheetController: ActionSheetController) {}
-  public async shhowActionSheet(photo, position) {
+  public async showActionSheet(photo, position) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Photos',
       buttons: [{
