@@ -81,7 +81,22 @@ export class PhotoService {
         key:this.PHOTO_STORAGE
       })  ;
       this.photos = JSON.parse(photos.value) || [];
+      
+      // Display the photo by reading into base64 format
+      for (let photo of this.photos) {
+        // Read each saved photo's data from the Filesystem
+        const readFile = await Filesystem.readFile({
+          path: photo.filepath,
+          directory: FilesystemDirectory.Data
+        });
+
+        //Web Platform only: Save the photo into the base64 format
+        photo.base64 = 'data:image/jpeg; bsae64, ${readFile.data}';
+      }
+
+
     }
+
   constructor() { }
 }
 
