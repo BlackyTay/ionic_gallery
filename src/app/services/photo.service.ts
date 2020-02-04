@@ -8,5 +8,16 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 export class PhotoService {
 
+  public async addNewGallery() {
+    //Take a photo
+    const capturePhoto = await Camera.getPhoto({
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera,
+      quality: 100
+    });
+  
+  }
+  
+
   constructor() { }
 }
