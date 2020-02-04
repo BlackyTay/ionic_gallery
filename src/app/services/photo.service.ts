@@ -29,13 +29,15 @@ export class PhotoService {
   
     Storage.set({
       key: this.PHOTO_STORAGE,
-      value: JSON.stringify(this.photos.map(p => {
-        // Don't save the base64 representation of the photo data, 
-        // since it's already saved on the Filesystem
-        const photoCopy = { ...p };
-        delete photoCopy.base64;
+      value: this.platform.is('hybrid')
+            ? JSON.stringify(this.photos)
+            : JSON.stringify(this.photos.map(p => {
+              // Don't save the base64 representation of the photo data, 
+              // since it's already saved on the Filesystem
+              const photoCopy = { ...p };
+              delete photoCopy.base64;
 
-        return photoCopy;
+              return photoCopy;
       }))
 
     })
@@ -115,7 +117,10 @@ export class PhotoService {
       })  ;
       this.photos = JSON.parse(photos.value) || [];
       
-      // Display the photo by reading into base64 format
+      // Easiest way to detect when running on the web;
+      // "when the platform is not hybrid, do this"
+      if (!this.platform.is('hybrid')) {
+        // Display the photo by reading into base64 format
       for (let photo of this.photos) {
         // Read each saved photo's data from the Filesystem
         const readFile = await Filesystem.readFile({
@@ -126,6 +131,7 @@ export class PhotoService {
         //Web Platform only: Save the photo into the base64 format
         photo.base64 = 'data:image/jpeg; bsae64, ${readFile.data}';
       }
+     }
 
 
     }
