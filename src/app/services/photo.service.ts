@@ -24,6 +24,8 @@ export class PhotoService {
   
   }
 
+  private async savePicture(cameraPhoto: CameraPhoto) { }
+  
   constructor() { }
 }
 
