@@ -7,6 +7,6 @@
   "cordova": {},
   "server": {
     "url": "http://localhost:8100",
-    "originalUrl": "http://localhost:8102"
+    "originalUrl": "http://localhost:8100"
   }
 }
