@@ -8,6 +8,7 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 export class PhotoService {
   public photos: Photo[] = [];
+  private PHOTO_STORAGE: string = "photos";
 
   public async addNewToGallery() {
     //Take a photo
