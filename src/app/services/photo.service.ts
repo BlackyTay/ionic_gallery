@@ -55,6 +55,13 @@ export class PhotoService {
       reader.readAsDataURL(blob);
     })
 
+    private async getPhotoFile(cameraPhoto: CameraPhoto, fileName: string): Promise<Photo> {
+      return { 
+        filepath: fileName,
+        webviewPath: cameraPhoto.webPath
+      };
+    }
+
   constructor() { }
 }
 
