@@ -129,7 +129,7 @@ export class PhotoService {
         });
 
         //Web Platform only: Save the photo into the base64 format
-        photo.base64 = 'data:image/jpeg; bsae64, ${readFile.data}';
+        photo.base64 = 'data:image/jpeg; base64, ${readFile.data}';
       }
      }
 
@@ -139,7 +139,7 @@ export class PhotoService {
       // Remove this photo from the Photos reference data array
       this.photos.splice(position, 1);
 
-      // Update photos array cache by overwriting th eexisting photo array
+      // Update photos array cache by overwriting the existing photo array
       Storage.set({
         key: this.PHOTO_STORAGE,
         value: JSON.stringify(this.photos)
