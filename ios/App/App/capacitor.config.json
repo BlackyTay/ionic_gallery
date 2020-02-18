@@ -1,1 +1,12 @@
-{}
+{
+  "appId": "io.ionic.starter",
+  "appName": "photo-gallery",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "server": {
+    "url": "http://localhost:8100",
+    "originalUrl": "http://localhost:8100"
+  }
+}
